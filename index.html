@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive collection of mathematical formulas for students and professionals">
+    <title>Math Formulas Explorer | Professional Mathematical Reference</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --card-background: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --gradient-1: linear-gradient(135deg, #2c3e50, #3498db);
+    --gradient-2: linear-gradient(135deg, #3498db, #e74c3c);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(52, 152, 219, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(231, 76, 60, 0.1) 0%, transparent 20%);
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px 0;
+    background: var(--gradient-1);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="10" y="20" font-size="10" fill="rgba(255,255,255,0.1)">∫ ∑ ∏ √ ∞</text></svg>');
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeInDown 1s ease-out;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 auto;
+    max-width: 600px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+#searchInput {
+    padding: 15px 25px;
+    width: 70%;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#searchInput:focus {
+    outline: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    background: white;
+}
+
+#searchButton {
+    padding: 15px 30px;
+    background: var(--gradient-2);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#searchButton:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+.category-btn {
+    padding: 12px 25px;
+    background-color: var(--card-background);
+    border: 2px solid var(--secondary-color);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: var(--secondary-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.category-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.category-btn:hover {
+    transform: translateY(-2px);
+    color: white;
+    border-color: transparent;
+}
+
+.category-btn:hover::before {
+    opacity: 1;
+}
+
+.category-btn.active {
+    background: var(--gradient-1);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+.formulas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    animation: fadeIn 1s ease-out 1.2s both;
+}
+
+.formula-card {
+    background-color: var(--card-background);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.formula-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.formula-card:hover::before {
+    transform: scaleX(1);
+}
+
+.formula-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.formula-title {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.formula-content {
+    margin: 20px 0;
+    font-size: 1.3rem;
+    font-family: 'Times New Roman', Times, serif;
+    color: var(--primary-color);
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.formula-description {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 10px;
+    background: rgba(52, 152, 219, 0.05);
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+
+    .formulas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .formula-card {
+        padding: 20px;
+    }
+
+    .formula-title {
+        font-size: 1.2rem;
+    }
+
+    .formula-content {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+} 
+</style>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-square-root-alt"></i> Math Formulas Explorer</h1>
+            <p class="subtitle">Your comprehensive mathematical reference</p>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search formulas..." aria-label="Search formulas">
+                <button id="searchButton" aria-label="Search">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <div class="categories" role="tablist" aria-label="Formula categories">
+                <button class="category-btn active" data-category="all" role="tab" aria-selected="true">All Formulas</button>
+                <button class="category-btn" data-category="algebra" role="tab">Algebra</button>
+                <button class="category-btn" data-category="geometry" role="tab">Geometry</button>
+                <button class="category-btn" data-category="calculus" role="tab">Calculus</button>
+                <button class="category-btn" data-category="trigonometry" role="tab">Trigonometry</button>
+            </div>
+
+            <div id="formulasContainer" class="formulas-grid" role="region" aria-label="Mathematical formulas">
+                <!-- Formulas will be dynamically inserted here -->
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2024 Math Formulas Explorer | Created for educational purposes</p>
+        </footer>
+    </div>
+
+    <script>const formulas = [
+        {
+            title: "Quadratic Formula",
+            content: "x = (-b ± √(b² - 4ac)) / 2a",
+            description: "Used to find the roots of a quadratic equation ax² + bx + c = 0",
+            category: "algebra"
+        },
+        {
+            title: "Pythagorean Theorem",
+            content: "a² + b² = c²",
+            description: "Relates the sides of a right triangle, where c is the hypotenuse",
+            category: "geometry"
+        },
+        {
+            title: "Area of Circle",
+            content: "A = πr²",
+            description: "Calculates the area of a circle with radius r",
+            category: "geometry"
+        },
+        {
+            title: "Derivative Power Rule",
+            content: "d/dx(xⁿ) = nxⁿ⁻¹",
+            description: "Basic rule for finding derivatives of power functions",
+            category: "calculus"
+        },
+        {
+            title: "Sine Function",
+            content: "sin(θ) = opposite/hypotenuse",
+            description: "Basic trigonometric function for right triangles",
+            category: "trigonometry"
+        },
+        {
+            title: "Cosine Function",
+            content: "cos(θ) = adjacent/hypotenuse",
+            description: "Basic trigonometric function for right triangles",
+            category: "trigonometry"
+        },
+        {
+            title: "Volume of Sphere",
+            content: "V = (4/3)πr³",
+            description: "Calculates the volume of a sphere with radius r",
+            category: "geometry"
+        },
+        {
+            title: "Sum of Arithmetic Series",
+            content: "Sₙ = n/2(a₁ + aₙ)",
+            description: "Finds the sum of the first n terms of an arithmetic sequence",
+            category: "algebra"
+        },
+        {
+            title: "Chain Rule",
+            content: "d/dx[f(g(x))] = f'(g(x)) * g'(x)",
+            description: "Rule for finding derivatives of composite functions",
+            category: "calculus"
+        },
+        {
+            title: "Law of Cosines",
+            content: "c² = a² + b² - 2ab cos(C)",
+            description: "Generalization of the Pythagorean theorem for any triangle",
+            category: "trigonometry"
+        },
+        {
+            title: "Binomial Theorem",
+            content: "(a + b)ⁿ = Σ(k=0 to n) C(n,k) aⁿ⁻ᵏ bᵏ",
+            description: "Expands the power of a binomial expression",
+            category: "algebra"
+        },
+        {
+            title: "Euler's Formula",
+            content: "eⁱˣ = cos(x) + i sin(x)",
+            description: "Connects complex exponentials with trigonometric functions",
+            category: "calculus"
+        },
+        {
+            title: "Area of Triangle",
+            content: "A = (1/2)bh",
+            description: "Calculates the area of a triangle with base b and height h",
+            category: "geometry"
+        },
+        {
+            title: "Product Rule",
+            content: "d/dx(uv) = u dv/dx + v du/dx",
+            description: "Rule for finding derivatives of products of functions",
+            category: "calculus"
+        },
+        {
+            title: "Law of Sines",
+            content: "a/sin(A) = b/sin(B) = c/sin(C)",
+            description: "Relates the sides and angles of any triangle",
+            category: "trigonometry"
+        },
+        {
+            title: "Sum of Geometric Series",
+            content: "Sₙ = a₁(1 - rⁿ)/(1 - r)",
+            description: "Finds the sum of the first n terms of a geometric sequence",
+            category: "algebra"
+        },
+        {
+            title: "Surface Area of Sphere",
+            content: "A = 4πr²",
+            description: "Calculates the surface area of a sphere with radius r",
+            category: "geometry"
+        },
+        {
+            title: "Quotient Rule",
+            content: "d/dx(u/v) = (v du/dx - u dv/dx)/v²",
+            description: "Rule for finding derivatives of quotients of functions",
+            category: "calculus"
+        },
+        {
+            title: "Double Angle Formulas",
+            content: "sin(2θ) = 2sinθcosθ, cos(2θ) = cos²θ - sin²θ",
+            description: "Expresses trigonometric functions of double angles",
+            category: "trigonometry"
+        },
+        {
+            title: "Distance Formula",
+            content: "d = √((x₂-x₁)² + (y₂-y₁)²)",
+            description: "Calculates the distance between two points in a plane",
+            category: "geometry"
+        },
+        {
+            title: "Integration by Parts",
+            content: "∫u dv = uv - ∫v du",
+            description: "Technique for integrating products of functions",
+            category: "calculus"
+        },
+        {
+            title: "Sum of Angles in Triangle",
+            content: "A + B + C = 180°",
+            description: "The sum of interior angles in any triangle is 180 degrees",
+            category: "geometry"
+        },
+        {
+            title: "Quadratic Equation",
+            content: "ax² + bx + c = 0",
+            description: "Standard form of a quadratic equation",
+            category: "algebra"
+        },
+        {
+            title: "Polar Coordinates",
+            content: "x = r cosθ, y = r sinθ",
+            description: "Conversion between Cartesian and polar coordinates",
+            category: "trigonometry"
+        },
+        {
+            title: "Volume of Cylinder",
+            content: "V = πr²h",
+            description: "Calculates the volume of a cylinder with radius r and height h",
+            category: "geometry"
+        },
+        {
+            title: "Taylor Series Expansion",
+            content: "f(x) = f(a) + f'(a)(x-a) + f''(a)(x-a)²/2! + ...",
+            description: "Approximates a function as an infinite sum of terms calculated from its derivatives",
+            category: "calculus"
+        },
+        {
+            title: "Matrix Multiplication",
+            content: "C = AB where cᵢⱼ = Σ(aᵢₖ * bₖⱼ)",
+            description: "Defines the product of two matrices",
+            category: "algebra"
+        },
+        {
+            title: "Fourier Transform",
+            content: "F(ω) = ∫f(t)e⁻ⁱᵂᵗ dt",
+            description: "Transforms a time-domain function into its frequency components",
+            category: "calculus"
+        },
+        {
+            title: "Laplace Transform",
+            content: "F(s) = ∫f(t)e⁻ˢᵗ dt",
+            description: "Transforms a time-domain function into the complex frequency domain",
+            category: "calculus"
+        },
+        {
+            title: "Vector Cross Product",
+            content: "a × b = |a||b|sinθ n̂",
+            description: "Computes a vector perpendicular to two given vectors",
+            category: "geometry"
+        },
+        {
+            title: "Dot Product",
+            content: "a · b = |a||b|cosθ",
+            description: "Computes the scalar product of two vectors",
+            category: "geometry"
+        },
+        {
+            title: "Gaussian Integral",
+            content: "∫e⁻ˣ² dx = √π",
+            description: "Fundamental integral in probability and statistics",
+            category: "calculus"
+        },
+        {
+            title: "Euler's Identity",
+            content: "eⁱπ + 1 = 0",
+            description: "Connects five fundamental mathematical constants",
+            category: "calculus"
+        },
+        {
+            title: "Green's Theorem",
+            content: "∮(Pdx + Qdy) = ∬(∂Q/∂x - ∂P/∂y) dxdy",
+            description: "Relates a line integral around a closed curve to a double integral",
+            category: "calculus"
+        },
+        {
+            title: "Stokes' Theorem",
+            content: "∮F·dr = ∬(∇×F)·dS",
+            description: "Generalizes Green's theorem to three dimensions",
+            category: "calculus"
+        },
+        {
+            title: "Divergence Theorem",
+            content: "∭(∇·F) dV = ∯F·dS",
+            description: "Relates the flux through a closed surface to the divergence of the field",
+            category: "calculus"
+        },
+        {
+            title: "Cauchy-Riemann Equations",
+            content: "∂u/∂x = ∂v/∂y, ∂u/∂y = -∂v/∂x",
+            description: "Conditions for a complex function to be holomorphic",
+            category: "calculus"
+        },
+        {
+            title: "Bayes' Theorem",
+            content: "P(A|B) = P(B|A)P(A)/P(B)",
+            description: "Describes the probability of an event based on prior knowledge",
+            category: "algebra"
+        },
+        {
+            title: "Binomial Distribution",
+            content: "P(X=k) = C(n,k) pᵏ(1-p)ⁿ⁻ᵏ",
+            description: "Probability distribution of the number of successes in n trials",
+            category: "algebra"
+        },
+        {
+            title: "Poisson Distribution",
+            content: "P(X=k) = (λᵏe⁻ˡ)/k!",
+            description: "Probability distribution of events in a fixed interval",
+            category: "algebra"
+        },
+        {
+            title: "Normal Distribution",
+            content: "f(x) = (1/σ√2π) e⁻⁽ˣ⁻μ⁾²/²σ²",
+            description: "Continuous probability distribution for real-valued data",
+            category: "algebra"
+        },
+        {
+            title: "Complex Numbers",
+            content: "z = a + bi, where i² = -1",
+            description: "Extension of real numbers with imaginary unit i",
+            category: "algebra"
+        },
+        {
+            title: "De Moivre's Formula",
+            content: "(cosθ + i sinθ)ⁿ = cos(nθ) + i sin(nθ)",
+            description: "Raises a complex number to a power",
+            category: "trigonometry"
+        },
+        {
+            title: "Vector Triple Product",
+            content: "a × (b × c) = b(a·c) - c(a·b)",
+            description: "Relates three vectors in three-dimensional space",
+            category: "geometry"
+        },
+        {
+            title: "Spherical Coordinates",
+            content: "x = r sinθ cosφ, y = r sinθ sinφ, z = r cosθ",
+            description: "Three-dimensional coordinate system using radius and angles",
+            category: "geometry"
+        }
+    ]; 
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const formulasContainer = document.getElementById('formulasContainer');
+    const categoryButtons = document.querySelectorAll('.category-btn');
+
+    let currentCategory = 'all';
+    let currentSearchTerm = '';
+
+    // Function to create formula card with animation
+    function createFormulaCard(formula) {
+        const card = document.createElement('div');
+        card.className = 'formula-card';
+        card.innerHTML = `
+            <h3 class="formula-title">${formula.title}</h3>
+            <div class="formula-content">${formula.content}</div>
+            <p class="formula-description">${formula.description}</p>
+        `;
+        
+        // Add animation class
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        // Trigger animation after a small delay
+        setTimeout(() => {
+            card.style.transition = 'all 0.5s ease-out';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 50);
+
+        return card;
+    }
+
+    // Function to filter and display formulas with animation
+    function displayFormulas() {
+        formulasContainer.innerHTML = '';
+        
+        const filteredFormulas = formulas.filter(formula => {
+            const matchesCategory = currentCategory === 'all' || formula.category === currentCategory;
+            const matchesSearch = formula.title.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
+                                formula.description.toLowerCase().includes(currentSearchTerm.toLowerCase());
+            return matchesCategory && matchesSearch;
+        });
+
+        if (filteredFormulas.length === 0) {
+            const noResults = document.createElement('div');
+            noResults.className = 'no-results';
+            noResults.innerHTML = `
+                <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px; color: var(--secondary-color);"></i>
+                <p>No formulas found matching your criteria.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Try adjusting your search or category filter.</p>
+            `;
+            formulasContainer.appendChild(noResults);
+            return;
+        }
+
+        // Add formulas with staggered animation
+        filteredFormulas.forEach((formula, index) => {
+            setTimeout(() => {
+                formulasContainer.appendChild(createFormulaCard(formula));
+            }, index * 100); // Stagger the animations
+        });
+    }
+
+    // Add hover effect to category buttons
+    categoryButtons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            button.style.transform = 'translateY(-2px)';
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            if (!button.classList.contains('active')) {
+                button.style.transform = 'translateY(0)';
+            }
+        });
+
+        button.addEventListener('click', () => {
+            categoryButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (!btn.classList.contains('active')) {
+                    btn.style.transform = 'translateY(0)';
+                }
+            });
+            button.classList.add('active');
+            currentCategory = button.dataset.category;
+            displayFormulas();
+        });
+    });
+
+    // Enhanced search functionality
+    let searchTimeout;
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            currentSearchTerm = e.target.value;
+            displayFormulas();
+        }, 300); // Debounce the search
+    });
+
+    // Add click animation to search button
+    searchButton.addEventListener('click', () => {
+        searchButton.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            searchButton.style.transform = 'scale(1)';
+        }, 100);
+        currentSearchTerm = searchInput.value;
+        displayFormulas();
+    });
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && document.activeElement === searchInput) {
+            currentSearchTerm = searchInput.value;
+            displayFormulas();
+        }
+    });
+
+    // Initial display of all formulas
+    displayFormulas();
+});
+    </script>
+</body>
+</html> 
